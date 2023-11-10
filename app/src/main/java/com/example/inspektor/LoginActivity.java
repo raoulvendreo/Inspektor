@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.inspektor.databinding.ActivityLoginBinding;
 
+
 public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding loginBinding;
@@ -30,8 +31,8 @@ public class LoginActivity extends AppCompatActivity {
         loginBinding.buttonLogin.setOnClickListener(view -> {
 
             //Retrieve entered userAD & passAD
-            String userAD = loginBinding.editTextUsername.toString();
-            String passAD = loginBinding.editTextPassword.toString();
+            String userAD = loginBinding.editTextUsername.getText().toString();
+            String passAD = loginBinding.editTextPassword.getText().toString();
 
             //Authentication userAD & passAD
             if (userAD.equals("Inspektor") && passAD.equals("123456")) {
@@ -40,15 +41,26 @@ public class LoginActivity extends AppCompatActivity {
 
                 startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
                 finish();
-            } else if (userAD.isEmpty()){
+            }
+            if (userAD.isEmpty()){
                 // User AD belum disii
-                Toast.makeText(this, "User AD harus diisi!", Toast.LENGTH_SHORT).show();
+                loginBinding.editTextUsername.setError("User AD wajib diisi!");
+                loginBinding.editTextUsername.requestFocus();
+
             } else if (passAD.isEmpty()){
                 // Pass AD belum diisi
-                Toast.makeText(this, "Password harus diisi!", Toast.LENGTH_SHORT).show();
-            } else {
-                // Failed login
-                Toast.makeText(LoginActivity.this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                loginBinding.editTextPassword.setError("Password wajib diisi!");
+                loginBinding.editTextPassword.requestFocus();
+
+            } else if (!userAD.equals("Inspektor")){
+
+                loginBinding.editTextUsername.setError("User AD tidak terdaftar!");
+                loginBinding.editTextUsername.requestFocus();
+
+            } else if (!passAD.equals("123456")) {
+
+                loginBinding.editTextPassword.setError("Password anda salah!");
+                loginBinding.editTextPassword.requestFocus();
             }
         });
     }

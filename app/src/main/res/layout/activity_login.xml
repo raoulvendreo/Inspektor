@@ -12,8 +12,9 @@
         android:text="I N S P E K T O R"
         android:layout_gravity="center"
         android:layout_marginBottom="100dp"
-        android:textSize="42dp"
-        android:layout_marginHorizontal="30dp"/>
+        android:layout_marginHorizontal="30dp"
+        android:textSize="38sp"
+        android:textColor="@color/win8_orange"/>
 
     <!-- Username EditText -->
     <EditText
@@ -37,6 +38,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
-        android:layout_gravity="bottom"/>
+        android:layout_marginVertical="100dp"/>
 
 </LinearLayout>

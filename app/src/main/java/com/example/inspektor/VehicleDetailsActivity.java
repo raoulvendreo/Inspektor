@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.inspektor.databinding.ActivityVehicleDetailsBinding;
 
-public class VehicleDetails extends AppCompatActivity {
+public class VehicleDetailsActivity extends AppCompatActivity {
 
     ActivityVehicleDetailsBinding detailsBinding;
 

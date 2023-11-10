@@ -21,7 +21,7 @@
         android:theme="@style/Theme.Inspektor"
         tools:targetApi="31">
         <activity
-            android:name=".VehicleDetails"
+            android:name=".VehicleDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
