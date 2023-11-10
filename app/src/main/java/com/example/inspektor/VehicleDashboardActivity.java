@@ -34,9 +34,9 @@ public class VehicleDashboardActivity extends AppCompatActivity {
     //data dummy
         itemList = new ArrayList<>();
 
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < 12; i++) {
             VehicleCategoryListItem listItem = new VehicleCategoryListItem(
-                    "test 1" + (i+1), "test2", "test3",null
+                    "Heavy Equipment Type " + (i+1), "Baik: " + i+7, "Rusak: " + i+1,null
             );
             itemList.add(listItem);
         }
