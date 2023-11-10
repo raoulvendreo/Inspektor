@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/list_item_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:weightSum="3">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="8dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+            <TextView
+                android:id="@+id/tv_vehicle_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/MediumPurple"
+                android:textSize="22sp"
+                android:maxLines="2"/>
+
+            <TextView
+                android:id="@+id/tv_condition_good"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:textSize="18sp"
+                android:maxLines="1"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/tv_condition_broken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/purple"
+                android:textSize="18sp"
+                android:maxLines="1"
+                android:layout_marginTop="6dp"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/img_vehicle_cat"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/placeholder_img"
+            android:scaleType="centerCrop"
+            />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
