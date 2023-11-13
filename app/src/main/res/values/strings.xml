@@ -3,7 +3,19 @@
     <string name="user_ad">[User AD]</string>
     <string name="password_ad">[Password AD]</string>
     <string name="login">[Login]</string>
+    <string name="startInspectionButton">Start Inspection</string>
 
+    <!--    13-11-23-->
+
+    <string-array name="business_area">
+        <item>5331</item>
+        <item>5332</item>
+        <item>5333</item>
+        <item>5334</item>
+        <item>5335</item>
+        <item>5336</item>
+        <item>5337</item>
+    </string-array>
 
     <!--<string name="title_activity_login">LoginActivity</string>
     <string name="prompt_email">Email</string>

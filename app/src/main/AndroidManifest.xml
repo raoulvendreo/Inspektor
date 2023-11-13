@@ -29,6 +29,8 @@
         <activity
             android:name=".VehicleDashboardActivity"
             android:exported="false" />
+        <activity android:name=".VehicleInspectionActivity"
+            android:exported="false"/>
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"

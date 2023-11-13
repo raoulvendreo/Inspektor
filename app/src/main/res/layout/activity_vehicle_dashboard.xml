@@ -21,15 +21,26 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/GhostWhite"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dashboard"
+        android:text="Business Area: "
+        android:textSize="18sp"/>
+
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_dashboard"
-        android:text="Daftar Business Area"/>
+        android:popupBackground="@android:color/widget_edittext_dark"
+        android:background="@color/cardview_dark_background"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view_dashboard"
@@ -38,5 +49,21 @@
         android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/spinner" />
+        app:layout_constraintTop_toTopOf="@id/spinner"
+        android:scrollbars="vertical"
+        android:scrollbarSize="7dp"
+        android:layout_marginBottom="80dp"
+        />
+
+    <Button
+        android:id="@+id/startInspectionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/startInspectionButton"
+        android:layout_marginBottom="20dp">
+
+    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

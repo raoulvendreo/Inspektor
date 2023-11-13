@@ -1,7 +1,9 @@
 package com.example.inspektor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +44,11 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
                 .load(itemList.get(position).getImgVehicle())
                 .placeholder(R.drawable.placeholder_img)
                 .into(holder.imgVCat);
+
+        holder.cardView.setOnClickListener(view -> {
+            Intent i = new Intent(context, VehicleDetailsActivity.class);
+            context.startActivity(i);
+        });
     }
 
     @Override
