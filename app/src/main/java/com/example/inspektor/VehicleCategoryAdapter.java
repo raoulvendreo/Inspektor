@@ -3,7 +3,6 @@ package com.example.inspektor;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.inspektor.databinding.ListVehicleCategoryBinding;
+import com.example.inspektor.model.VehicleCategoryListItem;
 
 import java.util.List;
 
@@ -39,11 +39,14 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
         holder.tvVCat.setText(itemList.get(position).getVehicleCategory());
         holder.tvCondGood.setText(itemList.get(position).getConditionGood());
         holder.tvCondBad.setText(itemList.get(position).getConditionBad());
+        holder.tvNotYetInspected.setText(itemList.get(position).getNotYetInspected());
 
         Glide.with(context)
                 .load(itemList.get(position).getImgVehicle())
                 .placeholder(R.drawable.placeholder_img)
                 .into(holder.imgVCat);
+
+
 
         holder.cardView.setOnClickListener(view -> {
             Intent i = new Intent(context, VehicleDetailsActivity.class);
@@ -58,7 +61,7 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvVCat, tvCondGood, tvCondBad;
+        TextView tvVCat, tvCondGood, tvCondBad, tvNotYetInspected;
         ImageView imgVCat;
         CardView cardView;
 
@@ -68,6 +71,7 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
             tvVCat = binding.tvVehicleCategory;
             tvCondGood = binding.tvConditionGood;
             tvCondBad = binding.tvConditionBroken;
+            tvNotYetInspected = binding.tvNotYetInspected;
             imgVCat = binding.imgVehicleCat;
             cardView = binding.listItemContainer;
         }

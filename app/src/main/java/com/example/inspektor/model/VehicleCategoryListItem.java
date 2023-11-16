@@ -1,16 +1,18 @@
-package com.example.inspektor;
+package com.example.inspektor.model;
 
 public class VehicleCategoryListItem {
 
     private String vehicleCategory;
     private String conditionGood;
     private String conditionBad;
+    private String notYetInspected;
     private String imgVehicle;
 
-    public VehicleCategoryListItem(String vehicleCategory, String conditionGood, String conditionBad, String imgVehicle) {
+    public VehicleCategoryListItem(String vehicleCategory, String conditionGood, String conditionBad, String notYetInspected, String imgVehicle) {
         this.vehicleCategory = vehicleCategory;
         this.conditionGood = conditionGood;
         this.conditionBad = conditionBad;
+        this.notYetInspected = notYetInspected;
         this.imgVehicle = imgVehicle;
     }
 
@@ -36,6 +38,14 @@ public class VehicleCategoryListItem {
 
     public void setConditionBad(String conditionBad) {
         this.conditionBad = conditionBad;
+    }
+
+    public String getNotYetInspected() {
+        return notYetInspected;
+    }
+
+    public void setNotYetInspected(String notYetInspected) {
+        this.notYetInspected = notYetInspected;
     }
 
     public String getImgVehicle() {

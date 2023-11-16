@@ -2,6 +2,7 @@ package com.example.inspektor;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.inspektor.databinding.ActivityVehicleDashboardBinding;
+import com.example.inspektor.model.VehicleCategoryListItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +35,14 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
     private void showVehicleCatalog() {
     recyclerView = dashboardBinding.recyclerViewDashboard;
     recyclerView.setHasFixedSize(true);
-    recyclerView.setLayoutManager(new GridLayoutManager(this,1));
+    recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
     //data dummy
         itemList = new ArrayList<>();
 
         for (int i = 0; i < 12; i++) {
             VehicleCategoryListItem listItem = new VehicleCategoryListItem(
-                    "Heavy Equipment Type " + (i+1), "Baik: " + i+7, "Rusak: " + i+1,null
+                    "Vehicle Type " + (i+1), "Baik: " + i+7, "Rusak: " + i+1, "Not Yet Inspected: " + i +2, null
             );
             itemList.add(listItem);
         }

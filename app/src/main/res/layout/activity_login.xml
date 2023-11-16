@@ -16,21 +16,32 @@
         android:textSize="38sp"
         android:textColor="@color/win8_orange"/>
 
-    <!-- Username EditText -->
-    <EditText
-        android:id="@+id/editText_username"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="@string/user_ad"
-        android:inputType="text" />
+        android:layout_height="wrap_content">
 
-    <!-- Password EditText -->
-    <EditText
-        android:id="@+id/editText_password"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_username"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="@string/user_ad"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:hint="@string/password_ad"
-        android:inputType="textPassword" />
+        android:layout_height="wrap_content">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_password"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="@string/password_ad"
+            android:inputType="textPassword">
+
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
 
     <!-- Login Button -->
     <Button

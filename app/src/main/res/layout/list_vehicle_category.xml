@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="@color/LightSkyBlue"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:maxLines="2"/>
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="12sp"
                 android:maxLines="1"
                 android:layout_marginTop="6dp"/>
 
@@ -50,7 +50,17 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:textSize="14sp"
+                android:textSize="12sp"
+                android:maxLines="1"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/tv_not_yet_inspected"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="12sp"
                 android:maxLines="1"
                 android:layout_marginTop="6dp"/>
 
