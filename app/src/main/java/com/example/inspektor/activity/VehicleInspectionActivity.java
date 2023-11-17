@@ -1,4 +1,4 @@
-package com.example.inspektor;
+package com.example.inspektor.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import com.example.inspektor.databinding.ActivityVehicleInspectionBinding;
 
 public class VehicleInspectionActivity extends AppCompatActivity {
 
-    ActivityVehicleInspectionBinding inspectionBinding;
+    ActivityVehicleInspectionBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +20,7 @@ public class VehicleInspectionActivity extends AppCompatActivity {
     }
 
     private void initializeView() {
-        inspectionBinding = ActivityVehicleInspectionBinding.inflate(getLayoutInflater());
-        setContentView(inspectionBinding.getRoot());
+        binding = ActivityVehicleInspectionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 }

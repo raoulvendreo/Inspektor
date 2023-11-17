@@ -1,4 +1,4 @@
-package com.example.inspektor;
+package com.example.inspektor.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.inspektor.databinding.ListVehicleCategoryBinding;
+import com.example.inspektor.fragment.VehicleDetailsFragment;
 import com.example.inspektor.model.VehicleCategoryListItem;
 
 import java.util.List;
@@ -46,11 +47,13 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
                 .placeholder(R.drawable.placeholder_img)
                 .into(holder.imgVCat);
 
-
+        /*holder.cardView.setOnClickListener(view -> {
+            Intent i = new Intent();
+        });*/
 
         holder.cardView.setOnClickListener(view -> {
-            Intent i = new Intent(context, VehicleDetailsActivity.class);
-            context.startActivity(i);
+            Intent i = new Intent(view.getContext(), VehicleDetailsFragment.class);
+            view.getContext().startActivity(i);
         });
     }
 
