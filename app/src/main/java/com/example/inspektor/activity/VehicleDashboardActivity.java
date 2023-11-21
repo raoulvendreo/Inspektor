@@ -18,7 +18,7 @@ import com.example.inspektor.model.VehicleCategoryListItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleDashboardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class VehicleDashboardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnVehicleTypeClickListener {
 
     ActivityVehicleDashboardBinding binding;
     RecyclerView recyclerView;
@@ -50,7 +50,7 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
             itemList.add(listItem);
         }
 
-    categoryAdapter = new VehicleCategoryAdapter(itemList, this);
+    categoryAdapter = new VehicleCategoryAdapter(itemList, this, this);
     recyclerView.setAdapter(categoryAdapter);
 
     }
@@ -83,6 +83,13 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onVehicleTypeClick(VehicleCategoryListItem itemList) {
+        startActivity(new Intent(VehicleDashboardActivity.this,VehicleDetailsActivity.class)
+                .putExtra("data", itemList));
 
     }
 }

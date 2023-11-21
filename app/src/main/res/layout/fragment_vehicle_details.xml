@@ -19,10 +19,10 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/GhostWhite"/>
+        android:textColor="@color/colorPrimary"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_details"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="100dp"

@@ -1,6 +1,8 @@
 package com.example.inspektor.model;
 
-public class VehicleCategoryListItem {
+import java.io.Serializable;
+
+public class VehicleCategoryListItem implements Serializable {
 
     private String vehicleCategory;
     private String conditionGood;

@@ -12,6 +12,8 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.inspektor.activity.OnVehicleTypeClickListener;
+import com.example.inspektor.activity.VehicleDetailsActivity;
 import com.example.inspektor.databinding.ListVehicleCategoryBinding;
 import com.example.inspektor.fragment.VehicleDetailsFragment;
 import com.example.inspektor.model.VehicleCategoryListItem;
@@ -23,9 +25,12 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
     private List<VehicleCategoryListItem> itemList;
     private Context context;
 
-    public VehicleCategoryAdapter(List<VehicleCategoryListItem> itemList, Context context) {
+    private OnVehicleTypeClickListener listener;
+
+    public VehicleCategoryAdapter(List<VehicleCategoryListItem> itemList, Context context, OnVehicleTypeClickListener listener) {
         this.itemList = itemList;
         this.context = context;
+        this.listener = listener;
     }
 
     @NonNull
@@ -47,14 +52,18 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
                 .placeholder(R.drawable.placeholder_img)
                 .into(holder.imgVCat);
 
-        /*holder.cardView.setOnClickListener(view -> {
-            Intent i = new Intent();
-        });*/
+//        holder.bind(itemList.get(position), listener);
 
         holder.cardView.setOnClickListener(view -> {
+            listener.onVehicleTypeClick(itemList.get(position));
+            /*Intent i = new Intent(context, VehicleDetailsActivity.class);
+            context.startActivity(i);*/
+        });
+
+        /*holder.cardView.setOnClickListener(view -> {
             Intent i = new Intent(view.getContext(), VehicleDetailsFragment.class);
             view.getContext().startActivity(i);
-        });
+        });*/
     }
 
     @Override
@@ -77,6 +86,11 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
             tvNotYetInspected = binding.tvNotYetInspected;
             imgVCat = binding.imgVehicleCat;
             cardView = binding.listItemContainer;
+        }
+
+        public void bind(VehicleCategoryListItem vehicleCategoryListItem, OnVehicleTypeClickListener listener) {
+
+
         }
     }
 }
