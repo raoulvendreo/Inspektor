@@ -1,22 +1,21 @@
 package com.example.inspektor.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-public class VehicleDetailsListItem implements Serializable {
+public class VehiclePlanningInspectionListItem implements Serializable {
 
     private String runningAccount;
     private String businessArea;
-    private String location;
     private String status;
-    private String lastInspec;
+    private String planningDate;
+    private String inspectDate;
 
-    public VehicleDetailsListItem(String runningAccount, String businessArea, String location, String status, String lastInspec) {
+    public VehiclePlanningInspectionListItem(String runningAccount, String businessArea, String status, String planningDate, String inspectDate) {
         this.runningAccount = runningAccount;
         this.businessArea = businessArea;
-        this.location = location;
         this.status = status;
-        this.lastInspec = lastInspec;
+        this.planningDate = planningDate;
+        this.inspectDate = inspectDate;
     }
 
     public String getRunningAccount() {
@@ -35,14 +34,6 @@ public class VehicleDetailsListItem implements Serializable {
         this.businessArea = businessArea;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -51,11 +42,19 @@ public class VehicleDetailsListItem implements Serializable {
         this.status = status;
     }
 
-    public String getLastInspec() {
-        return lastInspec;
+    public String getPlanningDate() {
+        return planningDate;
     }
 
-    public void setLastInspec(String lastInspec) {
-        this.lastInspec = lastInspec;
+    public void setPlanningDate(String planningDate) {
+        this.planningDate = planningDate;
+    }
+
+    public String getInspectDate() {
+        return inspectDate;
+    }
+
+    public void setInspectDate(String inspectDate) {
+        this.inspectDate = inspectDate;
     }
 }

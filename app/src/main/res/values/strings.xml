@@ -3,7 +3,8 @@
     <string name="user_ad">[User AD]</string>
     <string name="password_ad">[Password AD]</string>
     <string name="login">[Login]</string>
-    <string name="startInspectionButton">Start Inspection</string>
+    <string name="toInspectionPage">Go to Planning Inspection</string>
+
 
     <!--    13-11-23-->
 

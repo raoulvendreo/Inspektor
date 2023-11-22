@@ -61,14 +61,13 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.business_area, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        adapter.setAdapter(adapter);
         binding.spinner.setAdapter(adapter);
         binding.spinner.setOnItemSelectedListener(this);
 
         binding.startInspectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent startInspect = new Intent(VehicleDashboardActivity.this, VehicleInspectionActivity.class);
+                Intent startInspect = new Intent(VehicleDashboardActivity.this, VehiclePlanningInspectionActivity.class);
                 startActivity(startInspect);
             }
         });

@@ -38,10 +38,12 @@ public class VehicleDetailsAdapter extends RecyclerView.Adapter<VehicleDetailsAd
         holder.tv_bArea.setText(itemList.get(position).getBusinessArea());
         holder.tv_latLong.setText(itemList.get(position).getLocation());
         holder.tv_stts.setText(itemList.get(position).getStatus());
-        holder.tv_lastInspec.setText((CharSequence) itemList.get(position).getLastInspec());
+        holder.tv_lastInspec.setText(itemList.get(position).getLastInspec());
 
         //Ini bagian terakhir yang dikerjain pada tanggal 21-11-23
+
         //sedang kembangin recyclerView & adapter untuk VehicleDetailsActivity
+
         //selanjutnya populate isi VehicleDetails lalu lanjut mengerjakan Vehicle Planning Inspection
     }
 

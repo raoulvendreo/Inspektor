@@ -4,6 +4,8 @@
     <style name="Base.Theme.Inspektor" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="spinnerStyle">@style/Widget.App.Spinner</item>
+        <item name="android:spinnerStyle">@style/Widget.App.Spinner</item>
     </style>
 
     <style name="Theme.Inspektor" parent="Base.Theme.Inspektor" />
@@ -15,4 +17,6 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:statusBarColor">@color/colorAccent</item>
     </style>
+
+
 </resources>

@@ -1,9 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 <!--    <style name="Base.Theme.Inspektor" parent="Theme.Material3.DayNight.NoActionBar">-->
-<!--    <style name="Base.Theme.Inspektor" parent="Theme.Material3.Light.NoActionBar">-->
-    <style name="Base.Theme.Inspektor" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="Base.Theme.Inspektor" parent="Theme.Material3.Light.NoActionBar">
+<!--    <style name="Base.Theme.Inspektor" parent="Theme.Material3.Dark.NoActionBar">-->
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="spinnerStyle">@style/Widget.App.Spinner</item>
+        <item name="android:spinnerStyle">@style/Widget.App.Spinner</item>
     </style>
 </resources>
