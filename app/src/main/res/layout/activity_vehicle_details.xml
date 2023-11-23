@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".activity.VehicleDetailsActivity">
 
+
     <TextView
         android:id="@+id/tv_detail"
         android:layout_width="wrap_content"
@@ -14,27 +15,32 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="VEHICLE DETAIL"
-        android:textSize="24sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginBottom="50dp"/>
 
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.cardview.widget.CardView
+            android:layout_height="wrap_content"
+            >
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/list_vehicle_category_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardElevation="8dp"
-                android:layout_margin="8dp">
+                app:cardElevation="200dp"
+                app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.ExtraSmall"
+                android:layout_marginBottom="8dp"
+                app:cardBackgroundColor="@color/AntiqueWhite">
 
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:weightSum="3">
+                    android:weightSum="3"
+                    android:padding="4dp">
 
                     <LinearLayout
                         android:orientation="vertical"
@@ -92,12 +98,17 @@
                         android:scaleType="centerCrop"
                         />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:padding="4dp"
+                android:paddingHorizontal="6dp"
+                android:clipToPadding="false"
+                android:fadingEdge="vertical"
+                />
         </LinearLayout>
 </LinearLayout>

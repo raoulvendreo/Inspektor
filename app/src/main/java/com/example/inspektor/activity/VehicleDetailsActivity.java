@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.inspektor.R;
+import com.example.inspektor.OnVehicleTypeClickListener;
 import com.example.inspektor.VehicleDetailsAdapter;
 import com.example.inspektor.databinding.ActivityVehicleDetailsBinding;
 import com.example.inspektor.model.VehicleCategoryListItem;
@@ -15,13 +15,13 @@ import com.example.inspektor.model.VehicleDetailsListItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleDetailsActivity extends AppCompatActivity implements OnVehicleTypeClickListener{
+public class VehicleDetailsActivity extends AppCompatActivity implements OnVehicleTypeClickListener {
 
-    ActivityVehicleDetailsBinding binding;
-    VehicleCategoryListItem categoryListItem;
-    List<VehicleDetailsListItem> detailsListItem;
-    RecyclerView recyclerView;
-    VehicleDetailsAdapter detailsAdapter;
+    private ActivityVehicleDetailsBinding binding;
+    private VehicleCategoryListItem categoryListItem;
+    private List<VehicleDetailsListItem> detailsListItem;
+    private RecyclerView recyclerView;
+    private VehicleDetailsAdapter detailsAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class VehicleDetailsActivity extends AppCompatActivity implements OnVehic
 
         for (int i = 0; i < 10; i++) {
             VehicleDetailsListItem detailsListItem1 = new VehicleDetailsListItem(
-                     "Running Account: BK8533CG","Business Area: 3550","Location: 112.LT.23.57.199","Status: 1","Last Inspected: 04.10.2023"
+                     "Running Account: BK8533CG","Business Area: 355" + i,"Location: 112.LT.23.57.199","Status: 1","Last Inspected: 04.10.2023"
             );
             detailsListItem.add(detailsListItem1);
         }

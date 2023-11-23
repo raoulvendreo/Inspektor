@@ -15,7 +15,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="177dp"
         android:text="VEHICLE DASHBOARD"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,8 @@
         android:id="@+id/spinner"
         android:layout_width="120dp"
         android:layout_height="45dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="50dp"
         android:background="@color/white"
         android:elevation="6dp"
         android:popupBackground="@android:drawable/spinner_dropdown_background"
@@ -50,14 +50,14 @@
         android:id="@+id/recycler_view_dashboard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="170dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/spinner"
         android:scrollbars="vertical"
-        android:scrollbarSize="7dp"
         android:layout_marginBottom="80dp"
-
+        android:padding="10dp"
+        android:clipToPadding="false"
         />
 
     <Button

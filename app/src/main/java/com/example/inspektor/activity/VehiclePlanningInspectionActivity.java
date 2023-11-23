@@ -4,8 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
+import com.example.inspektor.OnPlanningInspectClickListener;
+import com.example.inspektor.R;
 import com.example.inspektor.VehiclePlanningInspectionAdapter;
 import com.example.inspektor.databinding.ActivityVehiclePlanningInspectionBinding;
 import com.example.inspektor.model.VehiclePlanningInspectionListItem;
@@ -13,12 +19,12 @@ import com.example.inspektor.model.VehiclePlanningInspectionListItem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehiclePlanningInspectionActivity extends AppCompatActivity {
+public class VehiclePlanningInspectionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnPlanningInspectClickListener {
 
-    ActivityVehiclePlanningInspectionBinding binding;
-    RecyclerView recyclerView;
-    VehiclePlanningInspectionAdapter planningInspectionAdapter;
-    List<VehiclePlanningInspectionListItem> planningInspectionListItems;
+    private ActivityVehiclePlanningInspectionBinding binding;
+    private RecyclerView recyclerView;
+    private VehiclePlanningInspectionAdapter planningInspectionAdapter;
+    private List<VehiclePlanningInspectionListItem> planningInspectionListItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +37,11 @@ public class VehiclePlanningInspectionActivity extends AppCompatActivity {
     private void initializeView() {
         binding = ActivityVehiclePlanningInspectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.business_area, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinner.setAdapter(adapter);
+        binding.spinner.setOnItemSelectedListener(this);
 
         showPlanningInspectionTaskList();
     }
@@ -48,7 +59,7 @@ public class VehiclePlanningInspectionActivity extends AppCompatActivity {
             );
             planningInspectionListItems.add(listItem);
         }
-        planningInspectionAdapter = new VehiclePlanningInspectionAdapter(planningInspectionListItems, this);
+        planningInspectionAdapter = new VehiclePlanningInspectionAdapter(planningInspectionListItems, this, this);
         recyclerView.setAdapter(planningInspectionAdapter);
 
         //Terakhir dikerjakan di 22-10-23, selanjutnya bikin isi VehiclePlanningInspectionAdapter
@@ -56,4 +67,20 @@ public class VehiclePlanningInspectionActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onPlanningInspectClick(VehiclePlanningInspectionListItem planInspectItem) {
+        startActivity(new Intent(VehiclePlanningInspectionActivity.this, VehicleInspectionActivity.class)
+                /*.putExtra("data", planInspectItem)*/);
+
+    }
 }

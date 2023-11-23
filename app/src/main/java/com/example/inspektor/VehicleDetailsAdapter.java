@@ -63,7 +63,7 @@ public class VehicleDetailsAdapter extends RecyclerView.Adapter<VehicleDetailsAd
             tv_latLong = binding.tvLatlong;
             tv_stts = binding.tvStts;
             tv_lastInspec = binding.tvLastInspec;
-            cardView = binding.listItemDetailContainer;
+            cardView = binding.listVehicleDetailsContainer;
 
         }
     }

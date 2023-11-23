@@ -11,7 +11,7 @@ import com.example.inspektor.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity {
 
-    ActivityLoginBinding loginBinding;
+    private ActivityLoginBinding loginBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

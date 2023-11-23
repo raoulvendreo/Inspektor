@@ -1,7 +1,6 @@
 package com.example.inspektor;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,10 +11,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.inspektor.activity.OnVehicleTypeClickListener;
-import com.example.inspektor.activity.VehicleDetailsActivity;
 import com.example.inspektor.databinding.ListVehicleCategoryBinding;
-import com.example.inspektor.fragment.VehicleDetailsFragment;
 import com.example.inspektor.model.VehicleCategoryListItem;
 
 import java.util.List;
@@ -85,7 +81,7 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
             tvCondBad = binding.tvConditionBroken;
             tvNotYetInspected = binding.tvNotYetInspected;
             imgVCat = binding.imgVehicleCat;
-            cardView = binding.listItemContainer;
+            cardView = binding.listVehicleCategoryContainer;
         }
 
         public void bind(VehicleCategoryListItem vehicleCategoryListItem, OnVehicleTypeClickListener listener) {

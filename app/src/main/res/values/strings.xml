@@ -7,8 +7,8 @@
 
 
     <!--    13-11-23-->
-
     <string-array name="business_area">
+        <item>5330</item>
         <item>5331</item>
         <item>5332</item>
         <item>5333</item>
@@ -16,6 +16,9 @@
         <item>5335</item>
         <item>5336</item>
         <item>5337</item>
+        <item>5338</item>
+        <item>5339</item>
+        <item>5340</item>
     </string-array>
 
     <!--<string name="title_activity_login">LoginActivity</string>

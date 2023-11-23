@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.example.inspektor.OnVehicleTypeClickListener;
 import com.example.inspektor.R;
 import com.example.inspektor.VehicleCategoryAdapter;
 import com.example.inspektor.databinding.ActivityVehicleDashboardBinding;
@@ -20,10 +21,10 @@ import java.util.List;
 
 public class VehicleDashboardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnVehicleTypeClickListener {
 
-    ActivityVehicleDashboardBinding binding;
-    RecyclerView recyclerView;
-    VehicleCategoryAdapter categoryAdapter;
-    List<VehicleCategoryListItem> itemList;
+    private ActivityVehicleDashboardBinding binding;
+    private RecyclerView recyclerView;
+    private VehicleCategoryAdapter categoryAdapter;
+    private List<VehicleCategoryListItem> itemList;
 
 
 
@@ -64,15 +65,10 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
         binding.spinner.setAdapter(adapter);
         binding.spinner.setOnItemSelectedListener(this);
 
-        binding.startInspectionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent startInspect = new Intent(VehicleDashboardActivity.this, VehiclePlanningInspectionActivity.class);
-                startActivity(startInspect);
-            }
+        binding.startInspectionButton.setOnClickListener(view -> {
+            Intent startInspect = new Intent(VehicleDashboardActivity.this, VehiclePlanningInspectionActivity.class);
+            startActivity(startInspect);
         });
-
-
     }
 
     @Override
