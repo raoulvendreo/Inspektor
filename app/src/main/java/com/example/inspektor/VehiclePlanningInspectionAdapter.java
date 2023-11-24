@@ -1,6 +1,7 @@
 package com.example.inspektor;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.inspektor.activity.VehicleInspectionActivity;
 import com.example.inspektor.databinding.ListPlanningInspectionBinding;
 import com.example.inspektor.model.VehiclePlanningInspectionListItem;
 
@@ -44,7 +46,8 @@ public class VehiclePlanningInspectionAdapter extends RecyclerView.Adapter<Vehic
 
         holder.cardView.setOnClickListener(view -> {
             /*listener.onPlanningInspectClick(planningInspectionListItems.get(position));*/
-
+            Intent i = new Intent(context, VehicleInspectionActivity.class);
+            context.startActivity(i);
 
         });
     }
