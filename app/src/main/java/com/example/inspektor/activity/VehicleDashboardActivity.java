@@ -69,6 +69,11 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
             Intent startInspect = new Intent(VehicleDashboardActivity.this, VehiclePlanningInspectionActivity.class);
             startActivity(startInspect);
         });
+
+        binding.logoutButton.setOnClickListener(view -> {
+            Intent logoutIntent = new Intent(VehicleDashboardActivity.this, LoginActivity.class);
+            startActivity(logoutIntent);
+        });
     }
 
     @Override

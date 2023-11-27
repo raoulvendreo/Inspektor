@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.VehicleDashboardActivity"
+    android:background="@color/PapayaWhip"
     >
 
     <TextView
@@ -23,6 +24,8 @@
         android:textColor="@color/colorPrimary"
 
         />
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,9 +70,20 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:text="@string/toInspectionPage"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp">
 
     </Button>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/IndianRed"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="20dp"
+        android:text="LOGOUT"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

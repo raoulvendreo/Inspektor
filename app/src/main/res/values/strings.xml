@@ -20,6 +20,49 @@
         <item>5338</item>
         <item>5339</item>
         <item>5340</item>
+        <item>5341</item>
+        <item>5342</item>
+        <item>5343</item>
+        <item>5344</item>
+        <item>5345</item>
+        <item>5346</item>
+    </string-array>
+
+    <string-array name="vehicle_types">
+        <item>Light Vehicle</item>
+        <item>Heavy Vehicle</item>
+        <item>Water Vehicle</item>
+        <item>Power Supply</item>
+        <item>Water Pump</item>
+        <item>Mesin Penunjang</item>
+    </string-array>
+    
+    <string-array name="vehicle_condition">
+        <item>Good</item>
+        <item>Damaged</item>
+    </string-array>
+    
+    <string-array name="vehicle_part">
+        <item>A. Alternator</item>
+        <item>B. Battery</item>
+        <item>C. Cabin</item>
+        <item>D. Chassis</item>
+        <item>E. Coupling</item>
+        <item>F. Differential</item>
+        <item>G. Electrical</item>
+        <item>H. Engine</item>
+        <item>I. Fan Drive</item>
+        <item>J. Front Axle</item>
+        <item>K. Hydraulic System</item>
+        <item>L. Motor Starter</item>
+        <item>M. Radiator</item>
+        <item>N. Rear Axle</item>
+        <item>O. Wheels</item>
+        <item>P. Spring</item>
+        <item>Q. Steering</item>
+        <item>R. System Brake</item>
+        <item>S. Transmission</item>
+        <item>T. Water Pump</item>
     </string-array>
 
     <!--<string name="title_activity_login">LoginActivity</string>

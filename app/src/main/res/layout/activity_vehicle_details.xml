@@ -8,7 +8,7 @@
     tools:context=".activity.VehicleDetailsActivity"
     android:paddingVertical="12dp"
     android:paddingHorizontal="12dp"
-    android:background="#00BB8B">
+    android:background="#004F3F">
 
         <LinearLayout
             android:orientation="vertical"

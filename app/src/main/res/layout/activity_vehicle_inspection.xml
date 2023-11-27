@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.VehicleInspectionActivity">
+    android:orientation="vertical"
+    tools:context=".activity.VehicleInspectionActivity"
+    android:background="@color/PapayaWhip">
 
     <TextView
         android:id="@+id/tv_inspection"
@@ -22,29 +24,215 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@id/tv_running_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_inspection"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="40dp"
         android:text="Running Account: "
-        android:id="@id/tv_running_account">
-    </TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_inspection" />
 
     <TextView
         android:id="@+id/et_running_account"
-        android:layout_width="125dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toEndOf="@+id/tv_running_account"
-        app:layout_constraintTop_toBottomOf="@id/tv_inspection"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="12dp"
+        android:background="@color/white"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:text="BK8533CG"
 
-        android:background="@drawable/edit_text_border"
-        android:text="BK8533CG">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_running_account" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_running_account"
+        android:text="Vehicle Type: "
+        android:id="@+id/tv_vehicle_type"
+        >
     </TextView>
 
+    <TextView
+        android:id="@+id/tv_business_area"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_running_account"
+        android:text="Business Area:"/>
+
+    <Spinner
+        android:id="@+id/spinner_vehicle_type"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        android:popupBackground="@android:drawable/spinner_dropdown_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_vehicle_type"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:id="@+id/tv_getBA"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_business_area"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="4dp"
+        android:text="3550"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_vehicle_type"
+        android:text="Condition: "
+        android:id="@+id/tv_condition">
+    </TextView>
+
+    <Spinner
+        android:id="@+id/spinner_condition"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_condition"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        android:popupBackground="@android:drawable/spinner_dropdown_background">
+    </Spinner>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_condition"
+        android:text="Damage Part: "
+        android:id="@+id/tv_damage_part">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_damage_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:text="Damage Date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_condition" />
+
+    <TextView
+        android:id="@+id/tvButton_to_datepicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_damage_date"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="4dp"
+        android:text="Choose date"
+        android:background="@color/white"
+        style="?android:attr/buttonBarButtonStyle"
+        />
+
+    <Spinner
+        android:id="@+id/spinner_damage_part"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_damage_part"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:elevation="3dp"
+        android:popupBackground="@android:drawable/spinner_dropdown_background">
+
+    </Spinner>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_margin="12dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner_damage_part"
+        android:id="@+id/textInputLayout_damage_details"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText_damage_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Insert damage details here..."
+            android:maxLines="4"
+            android:background="@color/white"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:text="Location:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayout_damage_details">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/et_location"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_location"
+        android:hint="isi..."
+        />
+
+    <TextView
+        android:id="@+id/tv_getCoordinate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_location"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="112.LT.23.57.199"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_GPS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_getCoordinate"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
+        android:text="GPS?"
+        />
 
 
 
