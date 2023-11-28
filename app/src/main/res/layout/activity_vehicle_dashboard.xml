@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.VehicleDashboardActivity"
-    android:background="@color/PapayaWhip"
+    android:background="@drawable/bg_gradient"
+
     >
 
     <TextView
@@ -22,12 +23,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textColor="@color/colorPrimary"
-
+        android:fontFamily="@font/roboto_slab_bold"
         />
 
 
 
     <TextView
+        android:id="@+id/tv_BA_dashboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,18 +37,19 @@
         android:text="Business Area: "
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_dashboard" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_dashboard"
+        android:fontFamily="@font/roboto_slab"/>
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginStart="160dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="58dp"
         android:background="@color/white"
         android:elevation="3dp"
         android:popupBackground="@android:drawable/spinner_dropdown_background"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_BA_dashboard"
         app:layout_constraintTop_toBottomOf="@+id/tv_dashboard" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -72,7 +75,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/toInspectionPage"
         android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        android:stateListAnimator="@null"
+        android:elevation="10dp"
+        android:fontFamily="@font/roboto_slab">
 
     </Button>
 
@@ -85,5 +91,8 @@
         android:backgroundTint="@color/IndianRed"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="20dp"
-        android:text="LOGOUT"/>
+        android:text="Log Out"
+        android:stateListAnimator="@null"
+        android:elevation="10dp"
+        android:fontFamily="@font/roboto_slab_bold"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

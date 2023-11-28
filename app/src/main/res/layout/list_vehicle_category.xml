@@ -15,6 +15,7 @@
     app:cardBackgroundColor="@color/AntiqueWhite"
     app:strokeColor="#009B9B"
     app:strokeWidth="2dp"
+
     >
 
     <LinearLayout
@@ -37,17 +38,19 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:maxLines="2"/>
+                android:maxLines="2"
+                android:fontFamily="@font/roboto_slab"/>
 
             <TextView
                 android:id="@+id/tv_condition_good"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
                 android:textColor="@color/ForestGreen"
                 android:textSize="12sp"
-                android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_slab_light"/>
 
             <TextView
                 android:id="@+id/tv_condition_broken"
@@ -57,7 +60,8 @@
                 android:textColor="@color/Goldenrod"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_slab_light"/>
 
             <TextView
                 android:id="@+id/tv_not_yet_inspected"
@@ -67,7 +71,8 @@
                 android:textColor="@color/holo_red_light"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_slab_light"/>
 
         </LinearLayout>
 

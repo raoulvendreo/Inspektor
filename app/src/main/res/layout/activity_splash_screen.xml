@@ -12,7 +12,8 @@
         android:text="Loading... Please Wait."
         android:gravity="center"
         android:textSize="30sp"
-        android:textColor="@color/OrangeRed">
+        android:textColor="@color/OrangeRed"
+        android:fontFamily="@font/roboto_slab">
     </TextView>
 
 </LinearLayout>

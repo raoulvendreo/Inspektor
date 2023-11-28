@@ -21,7 +21,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:fontFamily="@font/roboto_slab"/>
 
     <TextView
         android:id="@id/tv_running_account"
@@ -43,7 +44,7 @@
         android:paddingStart="4dp"
         android:paddingEnd="4dp"
         android:text="BK8533CG"
-
+        android:elevation="3dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_running_account" />
 
@@ -91,7 +92,8 @@
         android:layout_marginEnd="12dp"
         android:layout_marginTop="4dp"
         android:text="3550"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:elevation="3dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -134,7 +136,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
-        android:text="Damage Date"
+        android:text="Damage Date: "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_condition" />
 
@@ -166,22 +168,24 @@
     </Spinner>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout_damage_details"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:layout_margin="12dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner_damage_part"
-        android:id="@+id/textInputLayout_damage_details"
         >
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editText_damage_details"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Insert damage details here..."
-            android:maxLines="4"
-            android:background="@color/white"
-            />
+            android:maxLength="300"
+            android:elevation="6dp"
+            android:gravity="start"
+            android:inputType="textMultiLine"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -190,7 +194,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="14dp"
         android:text="Location:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textInputLayout_damage_details">
@@ -208,18 +212,51 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_location"
+        android:elevation="3dp"
         android:hint="isi..."
+        android:maxLength="40"
+        android:padding="2dp"
         />
 
-    <TextView
-        android:id="@+id/tv_getCoordinate"
+
+    <Button
+        android:id="@+id/btn_get_latest_coord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_location"
         android:layout_marginStart="12dp"
         android:layout_marginTop="4dp"
-        android:text="112.LT.23.57.199"
+        style="?android:attr/buttonBarButtonStyle"
+        android:text="press to get coordinate"
+        android:onClick="getLocation"
+        />
+
+    <TextView
+        android:id="@+id/tv_getLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get_latest_coord"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="[Lat]"
+        android:background="#FFEFD4"
+        android:elevation="3dp"
+        >
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_getLong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_getLat"
+        app:layout_constraintTop_toBottomOf="@+id/btn_get_latest_coord"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="4dp"
+        android:text="[Long]"
+        android:background="#FFEFD4"
+        android:elevation="3dp"
         >
     </TextView>
 
@@ -228,12 +265,68 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_getCoordinate"
+        app:layout_constraintTop_toBottomOf="@+id/tv_getLat"
         android:layout_marginStart="12dp"
         android:layout_marginTop="32dp"
         android:text="GPS?"
         />
 
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_GPS"
+        app:layout_constraintTop_toBottomOf="@id/tv_getLat"
+        android:orientation="horizontal"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="4dp"
+        >
+        <RadioButton
+            android:id="@+id/rdio_YES"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            >
+
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/rdio_NO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No">
+
+        </RadioButton>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_back_to_planning_inspection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_GPS"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="20dp"
+        android:text="Cancel"
+        android:backgroundTint="@color/IndianRed"
+        android:stateListAnimator="@null"
+        android:elevation="10dp">
+    </Button>
+
+    <Button
+        android:id="@+id/btn_next_inspection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_GPS"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="20dp"
+        android:text="Next"
+        android:stateListAnimator="@null"
+        android:elevation="10dp">
+    </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

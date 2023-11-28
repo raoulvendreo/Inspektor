@@ -10,10 +10,12 @@ import android.widget.ArrayAdapter;
 import com.example.inspektor.R;
 import com.example.inspektor.databinding.ActivityVehicleDashboardBinding;
 import com.example.inspektor.databinding.ActivityVehicleInspectionBinding;
+import com.example.inspektor.gps.GpsTracker;
 
 public class VehicleInspectionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     ActivityVehicleInspectionBinding binding;
+    private GpsTracker gpsTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,18 @@ public class VehicleInspectionActivity extends AppCompatActivity implements Adap
 
         initializeView();
 
+    }
+
+    public void getLocation(View view){
+        gpsTracker = new GpsTracker(VehicleInspectionActivity.this);
+        if(gpsTracker.canGetLocation()){
+            double latitude = gpsTracker.getLatitude();
+            double longitude = gpsTracker.getLongitude();
+            binding.tvGetLat.setText(String.valueOf(latitude));
+            binding.tvGetLong.setText(String.valueOf(longitude));
+        }else{
+            gpsTracker.showSettingsAlert();
+        }
     }
 
     private void initializeView() {

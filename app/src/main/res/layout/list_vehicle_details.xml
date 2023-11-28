@@ -17,7 +17,8 @@
         android:paddingVertical="8dp"
         android:background="@color/white"
         app:strokeColor="@color/DarkRed"
-        app:strokeWidth="1dp">
+        app:strokeWidth="1dp"
+        android:fontFamily="@font/roboto_slab">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -33,7 +34,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
-                tools:ignore="UselessParent">
+                tools:ignore="UselessParent"
+                >
                 <TextView
                     android:id="@+id/tv_run_acc"
                     android:layout_width="match_parent"
@@ -41,7 +43,8 @@
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:maxLines="3"/>
+                    android:maxLines="3"
+                    android:fontFamily="@font/roboto_slab"/>
 
                 <TextView
                     android:id="@+id/tv_BA"
@@ -51,7 +54,8 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:maxLines="1"
-                    android:layout_marginTop="6dp"/>
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/roboto_slab_light"/>
 
                 <TextView
                     android:id="@+id/tv_latlong"
@@ -61,7 +65,8 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:maxLines="1"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_slab_light"/>
 
                 <TextView
                     android:id="@+id/tv_stts"
@@ -71,7 +76,8 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:maxLines="1"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_slab_light"/>
 
                 <TextView
                     android:id="@+id/tv_last_inspec"
@@ -81,7 +87,8 @@
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     android:maxLines="1"
-                    android:layout_marginTop="4dp"/>
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_slab_light"/>
 
             </LinearLayout>
         </LinearLayout>
