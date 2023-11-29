@@ -35,7 +35,8 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:maxLines="3"/>
+                android:maxLines="3"
+                android:fontFamily="@font/roboto_slab"/>
 
             <TextView
                 android:id="@+id/tv_BA"
@@ -45,7 +46,8 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_slab_light"/>
 
             <TextView
                 android:id="@+id/tv_stts"
@@ -55,7 +57,8 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_slab_light"/>
 
             <TextView
                 android:id="@+id/tv_planning_date"
@@ -65,7 +68,8 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_slab_light"/>
 
             <TextView
                 android:id="@+id/tv_inspec_date"
@@ -75,7 +79,8 @@
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:maxLines="1"
-                android:layout_marginTop="6dp"/>
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/roboto_slab_light"/>
 
         </LinearLayout>
     </LinearLayout>

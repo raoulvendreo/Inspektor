@@ -26,12 +26,13 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(loginBinding.getRoot());
     }
 
-    private void OnClickedLoginButton(){
+    private void OnClickedLoginButton() {
         loginBinding.buttonLogin.setOnClickListener(view -> {
 
             //Retrieve entered userAD & passAD
             String userAD = loginBinding.editTextUsername.getText().toString();
             String passAD = loginBinding.editTextPassword.getText().toString();
+
 
             //Authentication userAD & passAD
             if (userAD.equals("Inspektor") && passAD.equals("123456")) {
@@ -41,17 +42,17 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
                 finish();
             }
-            if (userAD.isEmpty()){
+            if (userAD.isEmpty()) {
                 // User AD belum disii
                 loginBinding.editTextUsername.setError("User AD wajib diisi!");
                 loginBinding.editTextUsername.requestFocus();
 
-            } else if (passAD.isEmpty()){
+            } else if (passAD.isEmpty()) {
                 // Pass AD belum diisi
                 loginBinding.editTextPassword.setError("Password wajib diisi!");
                 loginBinding.editTextPassword.requestFocus();
 
-            } else if (!userAD.equals("Inspektor")){
+            } else if (!userAD.equals("Inspektor")) {
 
                 loginBinding.editTextUsername.setError("User AD tidak terdaftar!");
                 loginBinding.editTextUsername.requestFocus();

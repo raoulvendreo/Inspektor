@@ -2,6 +2,7 @@ package com.example.inspektor.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,14 +26,14 @@ public class VehicleInspectionActivity extends AppCompatActivity implements Adap
 
     }
 
-    public void getLocation(View view){
+    public void getLocation(View view) {
         gpsTracker = new GpsTracker(VehicleInspectionActivity.this);
-        if(gpsTracker.canGetLocation()){
+        if (gpsTracker.canGetLocation()) {
             double latitude = gpsTracker.getLatitude();
             double longitude = gpsTracker.getLongitude();
             binding.tvGetLat.setText(String.valueOf(latitude));
             binding.tvGetLong.setText(String.valueOf(longitude));
-        }else{
+        } else {
             gpsTracker.showSettingsAlert();
         }
     }
@@ -41,20 +42,28 @@ public class VehicleInspectionActivity extends AppCompatActivity implements Adap
         binding = ActivityVehicleInspectionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.btnBackToPlanningInspection.setOnClickListener(view -> {
+            Intent backToPlanning = new Intent(VehicleInspectionActivity.this, VehiclePlanningInspectionActivity.class);
+            startActivity(backToPlanning);
+        });
+
         ArrayAdapter<CharSequence> adapterVehicleType = ArrayAdapter.createFromResource(this, R.array.vehicle_types, android.R.layout.simple_spinner_item);
         adapterVehicleType.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerVehicleType.setAdapter(adapterVehicleType);
         binding.spinnerVehicleType.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> adapterCondition = ArrayAdapter.createFromResource(this,R.array.vehicle_condition, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterCondition = ArrayAdapter.createFromResource(this, R.array.vehicle_condition, android.R.layout.simple_spinner_item);
         adapterCondition.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerCondition.setAdapter(adapterCondition);
         binding.spinnerCondition.setOnItemSelectedListener(this);
 
-        ArrayAdapter<CharSequence> adapterVehiclePart = ArrayAdapter.createFromResource(this,R.array.vehicle_part, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterVehiclePart = ArrayAdapter.createFromResource(this, R.array.vehicle_part, android.R.layout.simple_spinner_item);
         adapterVehiclePart.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.spinnerDamagePart.setAdapter(adapterVehiclePart);
         binding.spinnerDamagePart.setOnItemSelectedListener(this);
+
+        //buat data dummy di sini
+
     }
 
     @Override
