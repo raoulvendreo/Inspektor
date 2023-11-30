@@ -5,13 +5,15 @@ import java.io.Serializable;
 public class VehicleCategoryListItem implements Serializable {
 
     private String vehicleCategory;
+    private String totalVehicle;
     private String conditionGood;
     private String conditionBad;
     private String notYetInspected;
     private String imgVehicle;
 
-    public VehicleCategoryListItem(String vehicleCategory, String conditionGood, String conditionBad, String notYetInspected, String imgVehicle) {
+    public VehicleCategoryListItem(String vehicleCategory, String totalVehicle, String conditionGood, String conditionBad, String notYetInspected, String imgVehicle) {
         this.vehicleCategory = vehicleCategory;
+        this.totalVehicle = totalVehicle;
         this.conditionGood = conditionGood;
         this.conditionBad = conditionBad;
         this.notYetInspected = notYetInspected;
@@ -24,6 +26,14 @@ public class VehicleCategoryListItem implements Serializable {
 
     public void setVehicleCategory(String vehicleCategory) {
         this.vehicleCategory = vehicleCategory;
+    }
+
+    public String getTotalVehicle() {
+        return totalVehicle;
+    }
+
+    public void setTotalVehicle(String totalVehicle) {
+        this.totalVehicle = totalVehicle;
     }
 
     public String getConditionGood() {

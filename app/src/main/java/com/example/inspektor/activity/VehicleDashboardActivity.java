@@ -44,9 +44,9 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
     //data dummy
         itemList = new ArrayList<>();
 
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 6; i++) {
             VehicleCategoryListItem listItem = new VehicleCategoryListItem(
-                    "Vehicle Type " + (i+1), "Baik: " + i+7, "Rusak: " + i+1, "Not Yet Inspected: " + i +2, null
+                    "VEHICLE TYPE " + (i+1), "TOTAL: " + i+6 , "Baik: " + i+2, "Rusak: " + i+2, "Not Yet Inspected: " + i +2, null
             );
             itemList.add(listItem);
         }

@@ -39,6 +39,7 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvVCat.setText(itemList.get(position).getVehicleCategory());
+        holder.tvTotVec.setText(itemList.get(position).getTotalVehicle());
         holder.tvCondGood.setText(itemList.get(position).getConditionGood());
         holder.tvCondBad.setText(itemList.get(position).getConditionBad());
         holder.tvNotYetInspected.setText(itemList.get(position).getNotYetInspected());
@@ -69,7 +70,7 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        TextView tvVCat, tvCondGood, tvCondBad, tvNotYetInspected;
+        TextView tvVCat, tvTotVec, tvCondGood, tvCondBad, tvNotYetInspected;
         ImageView imgVCat;
         CardView cardView;
 
@@ -77,6 +78,7 @@ public class VehicleCategoryAdapter extends RecyclerView.Adapter<VehicleCategory
             super(binding.getRoot());
 
             tvVCat = binding.tvVehicleCategory;
+            tvTotVec = binding.tvTotalVehicle;
             tvCondGood = binding.tvConditionGood;
             tvCondBad = binding.tvConditionBroken;
             tvNotYetInspected = binding.tvNotYetInspected;

@@ -39,6 +39,7 @@ public class VehicleDetailsActivity extends AppCompatActivity implements OnVehic
 
         assert categoryListItem != null;
         binding.tvVehicleCategory.setText(categoryListItem.getVehicleCategory());
+        binding.tvTotalVehicle.setText(categoryListItem.getTotalVehicle());
         binding.tvConditionGood.setText(categoryListItem.getConditionGood());
         binding.tvConditionBroken.setText(categoryListItem.getConditionBad());
         binding.tvNotYetInspected.setText(categoryListItem.getNotYetInspected());

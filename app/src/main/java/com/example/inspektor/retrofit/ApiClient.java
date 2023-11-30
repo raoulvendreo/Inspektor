@@ -11,7 +11,7 @@ public class ApiClient {
 
     Context context;
 
-    private static final String BASE_URL = " ISI URL API-NYA DI SINI ";
+    private static final String BASE_URL = "http://dev.indoagri.co.id/InspectionRA";
     private static Retrofit retrofit;
 
     HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();

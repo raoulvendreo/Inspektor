@@ -26,8 +26,6 @@
         android:fontFamily="@font/roboto_slab_bold"
         />
 
-
-
     <TextView
         android:id="@+id/tv_BA_dashboard"
         android:layout_width="wrap_content"
@@ -47,8 +45,8 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="58dp"
         android:background="@color/white"
-        android:elevation="3dp"
-        android:popupBackground="@android:drawable/spinner_dropdown_background"
+        android:elevation="5dp"
+        android:popupBackground="@drawable/spinner_bg"
         app:layout_constraintStart_toEndOf="@id/tv_BA_dashboard"
         app:layout_constraintTop_toBottomOf="@+id/tv_dashboard" />
 

@@ -37,9 +37,20 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:maxLines="2"
+                android:textSize="18sp"
+                android:maxLines="1"
                 android:fontFamily="@font/roboto_slab"/>
+
+            <TextView
+                android:id="@+id/tv_total_vehicle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_slab_light"/>
 
             <TextView
                 android:id="@+id/tv_condition_good"
