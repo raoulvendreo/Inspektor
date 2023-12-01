@@ -8,18 +8,18 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.inspektor.room.dao.UserLoginDao;
+import com.example.inspektor.room.dao.LoggedUserDao;
+import com.example.inspektor.room.entity.LoggedUserEntity;
 import com.example.inspektor.room.entity.MobEntity;
 import com.example.inspektor.room.entity.ObjPartEntity;
 import com.example.inspektor.room.entity.PlanEntity;
 import com.example.inspektor.room.entity.RunningAccountEntity;
-import com.example.inspektor.room.entity.UserLoginEntity;
 import com.example.inspektor.room.entity.VehicleTypeEntity;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {UserLoginEntity.class,
+@Database(entities = {LoggedUserEntity.class,
         RunningAccountEntity.class,
         PlanEntity.class,
         MobEntity.class,
@@ -29,7 +29,7 @@ import java.util.concurrent.Executors;
 public abstract class RoomDb extends RoomDatabase {
 
     //DAO di sini
-    public abstract UserLoginDao userLoginDao();
+    public abstract LoggedUserDao userLoginDao();
 
 
     private static volatile RoomDb INSTANCE;
@@ -67,7 +67,7 @@ public abstract class RoomDb extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more data, just add them.
 
-                UserLoginDao dao = INSTANCE.userLoginDao();
+                LoggedUserDao dao = INSTANCE.userLoginDao();
                 dao.deleteAll();
             });
         }

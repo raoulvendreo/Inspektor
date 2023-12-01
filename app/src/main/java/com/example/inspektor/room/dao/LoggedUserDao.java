@@ -6,17 +6,17 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.inspektor.room.entity.UserLoginEntity;
+import com.example.inspektor.room.entity.LoggedUserEntity;
 
 @Dao
-public interface UserLoginDao {
+public interface LoggedUserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(UserLoginEntity userLogin);
+    void insert(LoggedUserEntity userLogin);
 
-    @Query("SELECT * FROM User_Login_Data")
-    LiveData<UserLoginEntity> getAll();
+    @Query("SELECT * FROM Logged_User_Data")
+    LiveData<LoggedUserEntity> getAll();
 
-    @Query("DELETE FROM User_Login_Data")
+    @Query("DELETE FROM Logged_User_Data")
     void deleteAll();
 }

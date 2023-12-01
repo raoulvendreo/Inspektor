@@ -5,8 +5,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "User_Login_Data")
-public class UserLoginEntity {
+@Entity(tableName = "Logged_User_Data")
+public class LoggedUserEntity {
 
     @PrimaryKey(autoGenerate = true)
     private Integer id;
@@ -20,12 +20,12 @@ public class UserLoginEntity {
     @ColumnInfo(name = "AMA")
     private String ama;
 
-    public UserLoginEntity(){
+    public LoggedUserEntity(){
 
     }
 
     @Ignore
-    public UserLoginEntity(Integer id, String userAD, Integer nik, String ama) {
+    public LoggedUserEntity(Integer id, String userAD, Integer nik, String ama) {
         this.id = id;
         this.userAD = userAD;
         this.nik = nik;

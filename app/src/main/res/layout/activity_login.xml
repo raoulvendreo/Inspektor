@@ -47,6 +47,45 @@
     </com.google.android.material.textfield.TextInputLayout>
 
 
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="0dp"
+        android:layout_gravity="center"
+        android:id="@+id/radiogroup_domain"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="D O M A I N: "
+            android:fontFamily="@font/roboto_slab"
+            android:textSize="16dp">
+
+        </TextView>
+
+        <RadioButton
+            android:id="@+id/rdio_domain_indofood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indofood"
+            android:fontFamily="@font/roboto_slab"
+            >
+
+        </RadioButton>
+        <RadioButton
+            android:id="@+id/rdio_domain_lonsum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lonsum"
+            android:fontFamily="@font/roboto_slab"
+            >
+
+        </RadioButton>
+    </RadioGroup>
+
     <!-- Login Button -->
     <Button
         android:id="@+id/button_login"
