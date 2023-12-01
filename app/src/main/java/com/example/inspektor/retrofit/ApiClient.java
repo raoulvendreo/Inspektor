@@ -7,6 +7,8 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.inspektor.model.AuthGetLoggedUserRequest;
+import com.example.inspektor.model.AuthGetLoggedUserResponse;
 import com.example.inspektor.model.AuthRequest;
 import com.example.inspektor.model.AuthSignInResponse;
 
@@ -68,7 +70,7 @@ public class ApiClient {
 
                         Toast.makeText(context, "Token: " + accessToken, Toast.LENGTH_SHORT).show();
                     } else {
-                        Log.e(TAG, "onResponse gagal!!!");
+                        Log.e(TAG, "Username tidak terdaftar/password salah!");
                     }
 
                 }
@@ -81,5 +83,23 @@ public class ApiClient {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void getUserData(AuthGetLoggedUserRequest authGetLoggedUserRequest){
+        getApiInterface();
+        Call<AuthGetLoggedUserResponse> authGetLoggedUserResponseCall = getApiInterface().getUserData(
+                "Bearer " + authGetLoggedUserRequest.getToken());
+
+        authGetLoggedUserResponseCall.enqueue(new Callback<AuthGetLoggedUserResponse>() {
+            @Override
+            public void onResponse(Call<AuthGetLoggedUserResponse> call, Response<AuthGetLoggedUserResponse> response) {
+                //Terakhir di sini 1-12-23
+            }
+
+            @Override
+            public void onFailure(Call<AuthGetLoggedUserResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

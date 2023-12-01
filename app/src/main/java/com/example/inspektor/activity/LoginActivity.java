@@ -89,17 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Pass AD belum diisi
                 loginBinding.editTextPassword.setError("Password wajib diisi!");
                 loginBinding.editTextPassword.requestFocus();
-
-            } /*else if (!userAD.equals("Inspektor")) {
-
-                loginBinding.editTextUsername.setError("User AD tidak terdaftar!");
-                loginBinding.editTextUsername.requestFocus();
-
-            } else if (!passAD.equals("123456")) {
-
-                loginBinding.editTextPassword.setError("Password anda salah!");
-                loginBinding.editTextPassword.requestFocus();
-            }*/
+            }
         });
     }
 
