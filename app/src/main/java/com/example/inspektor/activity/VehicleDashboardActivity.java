@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,26 +15,45 @@ import com.example.inspektor.OnVehicleTypeClickListener;
 import com.example.inspektor.R;
 import com.example.inspektor.VehicleCategoryAdapter;
 import com.example.inspektor.databinding.ActivityVehicleDashboardBinding;
+import com.example.inspektor.model.AuthGetLoggedUserRequest;
 import com.example.inspektor.model.VehicleCategoryListItem;
+import com.example.inspektor.retrofit.ApiClient;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleDashboardActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, OnVehicleTypeClickListener {
 
+    private static final String TOKEN_SHARED_PREFS = "";
     private ActivityVehicleDashboardBinding binding;
     private RecyclerView recyclerView;
     private VehicleCategoryAdapter categoryAdapter;
     private List<VehicleCategoryListItem> itemList;
 
-
+    private ApiClient apiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Mau coba panggil semua data dari server via Retrofit di sini
+        syncData();
+
         initializeView();
         showVehicleCatalog();
+    }
+
+    private void syncData() {
+
+        SharedPreferences sharedPreferences = this.getSharedPreferences(TOKEN_SHARED_PREFS, MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "");
+
+
+        //Terakhir di 4-12-23 sedang mencoba koding method untuk ambil semua data dari server lalu dimasukkan ke RoomDB
+        apiClient = new ApiClient();
+        apiClient.retrofit(getApplicationContext());
+
+        apiClient.getUserData(new AuthGetLoggedUserRequest(token));
     }
 
     private void showVehicleCatalog() {
@@ -59,6 +79,8 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
     private void initializeView() {
         binding = ActivityVehicleDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.business_area, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

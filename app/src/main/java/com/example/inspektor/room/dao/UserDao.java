@@ -6,18 +6,17 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
-import com.example.inspektor.room.entity.PlanEntity;
+import com.example.inspektor.room.entity.UserEntity;
 
 @Dao
-public interface PlanDao {
+public interface UserDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(PlanEntity plan);
+    void insert(UserEntity userEntity);
 
-    @Query("SELECT * FROM Inspec_Plan")
-    LiveData<PlanEntity> getAll();
+    @Query("SELECT * FROM UserTable")
+    LiveData<UserEntity> getAll();
 
-    @Query("DELETE FROM Inspec_Plan")
+    @Query("DELETE FROM UserTable")
     void deleteAll();
-
 }

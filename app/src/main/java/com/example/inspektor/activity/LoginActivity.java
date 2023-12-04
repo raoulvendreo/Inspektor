@@ -1,13 +1,18 @@
 package com.example.inspektor.activity;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.inspektor.databinding.ActivityLoginBinding;
+import com.example.inspektor.model.AuthGetLoggedUserRequest;
 import com.example.inspektor.model.AuthRequest;
 import com.example.inspektor.model.AuthToken;
 import com.example.inspektor.retrofit.ApiClient;
@@ -18,8 +23,9 @@ import retrofit2.Call;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final String TOKEN_SHARED_PREFS = "";
     private ActivityLoginBinding loginBinding;
-    ApiClient apiClient;
+    private ApiClient apiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,14 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         initializeView();
 
-        addListenerOnRadioButton();
-
         OnClickedLoginButton();
-    }
-
-    private void addListenerOnRadioButton() {
-
-
     }
 
     private void initializeView() {
@@ -45,9 +44,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void OnClickedLoginButton() {
-
-
-
         loginBinding.buttonLogin.setOnClickListener(view -> {
 
             apiClient.retrofit(getApplicationContext());
@@ -74,6 +70,13 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 apiClient.getToken(new AuthRequest(userAD, passAD, selectedDomain));
+
+                SharedPreferences sharedPreferences = this.getSharedPreferences(TOKEN_SHARED_PREFS, MODE_PRIVATE);
+                String token = sharedPreferences.getString("token", "");
+
+                Log.e(TAG, "tokennya: " + token);
+
+//                apiClient.getUserData(new AuthGetLoggedUserRequest(token));
 
                 startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
                 finish();
