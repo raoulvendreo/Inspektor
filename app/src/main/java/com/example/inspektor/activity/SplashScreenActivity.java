@@ -44,7 +44,7 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         if (token.isEmpty()){
 
-            Log.e(TAG, "Tidak ada Token!");
+            Log.e(TAG, "Tidak ada Token! Menuju LOGIN PAGE");
 
             new Handler().postDelayed(()->{
                 startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));

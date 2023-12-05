@@ -6,27 +6,28 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.inspektor.room.dao.UserDao;
 import com.example.inspektor.room.entity.UserEntity;
+import com.example.inspektor.typeconverters.CompanyTypeConverter;
+import com.example.inspektor.typeconverters.EstatesTypeConverter;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {UserEntity.class}, version = 1, exportSchema = false)
-
+@Database(entities = {UserEntity.class}, version = 2, exportSchema = false)
+@TypeConverters({CompanyTypeConverter.class, EstatesTypeConverter.class})
 public abstract class RoomDb extends RoomDatabase {
 
     //DAO di sini
     public abstract UserDao userDao();
 
-
     private static volatile RoomDb INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
-    public static final ExecutorService databaseWriteExecutor =
-            Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+    public static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static String DATABASE_NAME = "Inspection_RA.db";
 

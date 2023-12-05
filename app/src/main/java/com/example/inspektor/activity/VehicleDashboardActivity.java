@@ -36,7 +36,9 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Mau coba panggil semua data dari server via Retrofit di sini
+        apiClient = new ApiClient();
+        apiClient.retrofit(getApplicationContext());
+
         syncData();
 
         initializeView();
@@ -48,12 +50,13 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
         SharedPreferences sharedPreferences = this.getSharedPreferences(TOKEN_SHARED_PREFS, MODE_PRIVATE);
         String token = sharedPreferences.getString("token", "");
 
-
+        //Mau coba panggil semua data dari server via Retrofit di sini
         //Terakhir di 4-12-23 sedang mencoba koding method untuk ambil semua data dari server lalu dimasukkan ke RoomDB
-        apiClient = new ApiClient();
-        apiClient.retrofit(getApplicationContext());
 
-        apiClient.getUserData(new AuthGetLoggedUserRequest(token));
+        // UNTUK GET USER LOGIN DATA
+//        apiClient.getUserData(new AuthGetLoggedUserRequest(token));
+
+
     }
 
     private void showVehicleCatalog() {

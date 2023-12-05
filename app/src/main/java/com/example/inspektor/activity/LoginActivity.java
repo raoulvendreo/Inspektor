@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -32,22 +33,20 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         apiClient = new ApiClient();
+        apiClient.retrofit(getApplicationContext());
 
         initializeView();
-
-        OnClickedLoginButton();
     }
 
     private void initializeView() {
         loginBinding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(loginBinding.getRoot());
+
+        loginBinding.buttonLogin.setOnClickListener(view ->
+                OnClickedLoginButton());
     }
 
     private void OnClickedLoginButton() {
-        loginBinding.buttonLogin.setOnClickListener(view -> {
-
-            apiClient.retrofit(getApplicationContext());
-
             //Retrieve entered userAD & passAD
             String userAD = loginBinding.editTextUsername.getText().toString();
             String passAD = loginBinding.editTextPassword.getText().toString();
@@ -69,17 +68,27 @@ public class LoginActivity extends AppCompatActivity {
                     selectedDomain = "lonsum";
                 }
 
-                apiClient.getToken(new AuthRequest(userAD, passAD, selectedDomain));
-
                 SharedPreferences sharedPreferences = this.getSharedPreferences(TOKEN_SHARED_PREFS, MODE_PRIVATE);
                 String token = sharedPreferences.getString("token", "");
 
-                Log.e(TAG, "tokennya: " + token);
+                Log.e(TAG, "Proses getToken berlangsung... ");
 
-//                apiClient.getUserData(new AuthGetLoggedUserRequest(token));
+                apiClient.getToken(new AuthRequest(userAD, passAD, selectedDomain));
 
-                startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
-                finish();
+
+
+                /*if (!token.isEmpty()){
+                    apiClient.getUserData(new AuthGetLoggedUserRequest(token));
+
+                    startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
+                    new Handler().postDelayed(()->{
+                        Toast.makeText(this, "Loading... ", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
+                        finish();
+                    }, 1000);
+                }*/
+//                startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
+//                finish();
             }
 
 
@@ -93,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                 loginBinding.editTextPassword.setError("Password wajib diisi!");
                 loginBinding.editTextPassword.requestFocus();
             }
-        });
     }
 
 }

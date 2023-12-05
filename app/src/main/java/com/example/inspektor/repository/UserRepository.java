@@ -10,8 +10,8 @@ import com.example.inspektor.room.entity.UserEntity;
 
 public class UserRepository {
 
-    private final UserDao mUserDao;
-    private final LiveData<UserEntity> mAllUserData;
+    public UserDao mUserDao;
+    private LiveData<UserEntity> mAllUserData;
 
     public UserRepository(Application application){
         RoomDb roomDb = RoomDb.getInstance(application);

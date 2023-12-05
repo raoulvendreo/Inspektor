@@ -34,7 +34,7 @@ public class UserData implements Serializable {
     @SerializedName("company")
     @Expose
     @TypeConverters(CompanyTypeConverter.class)
-    private List<Company> company;
+    private List<Company> company = null;
 
     //Terakhir ngerjain di sini. Ngerjain cara nyimpen JSON Array pakai Type Converter
 

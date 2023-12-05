@@ -6,8 +6,15 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.inspektor.model.Company;
+import com.example.inspektor.typeconverters.CompanyTypeConverter;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity(tableName = "UserTable", indices = @Index(value = {"id"}, unique = true))
 public class UserEntity implements Serializable {
@@ -28,17 +35,24 @@ public class UserEntity implements Serializable {
     @ColumnInfo(name = "fullname")
     private String userFullname;
 
+//    @SerializedName("company")
+//    @Expose
+    @ColumnInfo(name = "company")
+    @TypeConverters(CompanyTypeConverter.class)
+    private List<Company> userCompany = null;
+
     public UserEntity(){
 
     }
 
     @Ignore
-    public UserEntity(@NonNull String userId, String userCode, String userUsername, String userEmail, String userFullname) {
+    public UserEntity(@NonNull String userId, String userCode, String userUsername, String userEmail, String userFullname, List<Company> userCompany) {
         this.userId = userId;
         this.userCode = userCode;
         this.userUsername = userUsername;
         this.userEmail = userEmail;
         this.userFullname = userFullname;
+        this.userCompany = userCompany;
     }
 
     @NonNull
@@ -80,5 +94,13 @@ public class UserEntity implements Serializable {
 
     public void setUserFullname(String userFullname) {
         this.userFullname = userFullname;
+    }
+
+    public List<Company> getUserCompany() {
+        return userCompany;
+    }
+
+    public void setUserCompany(List<Company> userCompany) {
+        this.userCompany = userCompany;
     }
 }
