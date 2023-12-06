@@ -4,22 +4,14 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.inspektor.databinding.ActivityLoginBinding;
-import com.example.inspektor.model.AuthGetLoggedUserRequest;
 import com.example.inspektor.model.AuthRequest;
-import com.example.inspektor.model.AuthToken;
 import com.example.inspektor.retrofit.ApiClient;
-import com.example.inspektor.retrofit.ApiInterface;
-
-import retrofit2.Call;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -75,10 +67,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 apiClient.getToken(new AuthRequest(userAD, passAD, selectedDomain));
 
-
+                Log.e(TAG, "hasil getToken: " + token);
 
                 /*if (!token.isEmpty()){
-                    apiClient.getUserData(new AuthGetLoggedUserRequest(token));
+                    apiClient.getUserData(new AuthSendTokenRequest(token));
 
                     startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
                     new Handler().postDelayed(()->{

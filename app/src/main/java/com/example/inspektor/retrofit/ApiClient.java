@@ -4,21 +4,21 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.inspektor.NavUtils;
-import com.example.inspektor.activity.VehicleDashboardActivity;
-import com.example.inspektor.model.AuthGetLoggedUserRequest;
+import com.example.inspektor.model.AuthSendTokenRequest;
 import com.example.inspektor.model.AuthGetLoggedUserResponse;
 import com.example.inspektor.model.AuthRequest;
 import com.example.inspektor.model.AuthSignInResponse;
 import com.example.inspektor.model.Company;
+import com.example.inspektor.model.MobData;
+import com.example.inspektor.model.MobResponse;
+import com.example.inspektor.repository.MobRepository;
 import com.example.inspektor.repository.UserRepository;
+import com.example.inspektor.room.entity.MobEntity;
 import com.example.inspektor.room.entity.UserEntity;
 
 import java.util.List;
@@ -42,6 +42,7 @@ public class ApiClient {
     private static final String TOKEN_SHARED_PREFS = "";
 
     private UserRepository mUserRepository;
+    private MobRepository mMobRepository;
 
     HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
     OkHttpClient okHttpClient = new OkHttpClient
@@ -96,8 +97,11 @@ public class ApiClient {
 
                         Log.e(TAG, "Hasil getToken: " + token );
 
-                        //NEW! 5-12-23
-                        getUserData(new AuthGetLoggedUserRequest(token));
+                        //  5-12-23
+                        getUserData(new AuthSendTokenRequest(token));
+
+                        // 6-12-23
+                        getMobData(new AuthSendTokenRequest(token));
 //                        Toast.makeText(context, "sPrefsToken: " + token, Toast.LENGTH_SHORT).show();
                     } else {
                         Log.e(TAG, "Username tidak terdaftar/password salah!");
@@ -115,10 +119,10 @@ public class ApiClient {
         }
     }
 
-    public void getUserData(AuthGetLoggedUserRequest authGetLoggedUserRequest){
+    public void getUserData(AuthSendTokenRequest authSendTokenRequest){
         getApiInterface();
         Call<AuthGetLoggedUserResponse> authGetLoggedUserResponseCall = getApiInterface().getUserData(
-                "Bearer " + authGetLoggedUserRequest.getToken());
+                "Bearer " + authSendTokenRequest.getToken());
 
         authGetLoggedUserResponseCall.enqueue(new Callback<AuthGetLoggedUserResponse>() {
             @Override
@@ -168,12 +172,61 @@ public class ApiClient {
 
             @Override
             public void onFailure(Call<AuthGetLoggedUserResponse> call, Throwable t) {
-
+                Log.e(TAG, "onFailure: getUserData gagal!");
             }
         });
     }
 
+    public void getMobData(AuthSendTokenRequest authSendTokenRequest){
+        getApiInterface();
+        Call<MobResponse> mobResponseCall = getApiInterface().getMobData(
+                "Bearer " + authSendTokenRequest.getToken());
 
+        mobResponseCall.enqueue(new Callback<MobResponse>() {
+            @Override
+            public void onResponse(Call<MobResponse> call, Response<MobResponse> response) {
+                // GET MOB
+                mMobRepository = new MobRepository(new Application());
+                Log.e(TAG, "onResponse akan mengecek apakah getMobData berhasil atau tidak");
+
+                assert response.body() != null;
+                List<MobData> mobDataList = response.body().getData();
+
+                Log.e(TAG, "mobDataList: " + mobDataList);
+
+                for (MobData mobData : mobDataList) {
+                    MobEntity mobEntity = new MobEntity();
+
+                    mobEntity.setMobId(mobData.getId());
+                    mobEntity.setMobNoInspec(mobData.getNo_inspec());
+                    mobEntity.setMobBa(mobData.getBa());
+                    mobEntity.setMobRunningAccount(mobData.getRunningAccount());
+                    mobEntity.setMobVehicleType(mobData.getVehicleType());
+                    mobEntity.setMobObjPart(mobData.getObjPart());
+                    mobEntity.setMobDamDate(mobData.getDamDate());
+                    mobEntity.setMobStatus(mobData.getStatus());
+                    mobEntity.setMobLoc(mobData.getLoc());
+                    mobEntity.setMobPhoto(mobData.getPhoto());
+                    mobEntity.setMobNote(mobData.getNote());
+                    mobEntity.setMobPlanDate(mobData.getPlanDate());
+                    mobEntity.setMobCreatedBy(mobData.getCreatedBy());
+                    mobEntity.setMobCreatedDate(mobData.getCreatedDate());
+                    mobEntity.setMobCreatedTime(mobData.getCreatedTime());
+                    mobEntity.setMobZtuagriRunacctId(mobData.getZtuagriRunacctId());
+                    mobEntity.setMobZinspecVehicletypeId(mobData.getZinspecVehicletypeId());
+
+                    mMobRepository.insertAll(mobEntity);
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<MobResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: getMobData gagal!");
+            }
+        });
+    }
 
 
 }

@@ -4,18 +4,15 @@ package com.example.inspektor.activity;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.inspektor.databinding.ActivitySplashScreenBinding;
-import com.example.inspektor.model.AuthGetLoggedUserRequest;
 import com.example.inspektor.retrofit.ApiClient;
 import com.example.inspektor.room.RoomDb;
 
@@ -54,7 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             /*apiClient = new ApiClient();
             apiClient.retrofit(getApplicationContext());
 
-            apiClient.getUserData(new AuthGetLoggedUserRequest(token));*/
+            apiClient.getUserData(new AuthSendTokenRequest(token));*/
 
             Log.e(TAG, "Token Valid! Tokennya adalah: " + token);
 

@@ -4,17 +4,17 @@ import androidx.room.Ignore;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AuthGetLoggedUserRequest {
+public class AuthSendTokenRequest {
 
     @SerializedName("token")
     private String token = "";
 
-    public AuthGetLoggedUserRequest(){
+    public AuthSendTokenRequest(){
 
     }
 
     @Ignore
-    public AuthGetLoggedUserRequest(String token) {
+    public AuthSendTokenRequest(String token) {
         this.token = token;
     }
 

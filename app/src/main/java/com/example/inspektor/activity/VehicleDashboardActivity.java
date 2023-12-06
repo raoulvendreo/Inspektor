@@ -15,7 +15,6 @@ import com.example.inspektor.OnVehicleTypeClickListener;
 import com.example.inspektor.R;
 import com.example.inspektor.VehicleCategoryAdapter;
 import com.example.inspektor.databinding.ActivityVehicleDashboardBinding;
-import com.example.inspektor.model.AuthGetLoggedUserRequest;
 import com.example.inspektor.model.VehicleCategoryListItem;
 import com.example.inspektor.retrofit.ApiClient;
 
@@ -54,7 +53,7 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
         //Terakhir di 4-12-23 sedang mencoba koding method untuk ambil semua data dari server lalu dimasukkan ke RoomDB
 
         // UNTUK GET USER LOGIN DATA
-//        apiClient.getUserData(new AuthGetLoggedUserRequest(token));
+//        apiClient.getUserData(new AuthSendTokenRequest(token));
 
 
     }
