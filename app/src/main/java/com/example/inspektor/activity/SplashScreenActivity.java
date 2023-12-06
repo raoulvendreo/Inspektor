@@ -51,7 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             /*apiClient = new ApiClient();
             apiClient.retrofit(getApplicationContext());
 
-            apiClient.getUserData(new AuthSendTokenRequest(token));*/
+            apiClient.getUserData(new GLOBALSendTokenRequest(token));*/
 
             Log.e(TAG, "Token Valid! Tokennya adalah: " + token);
 

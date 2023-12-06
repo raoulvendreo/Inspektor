@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.e(TAG, "hasil getToken: " + token);
 
                 /*if (!token.isEmpty()){
-                    apiClient.getUserData(new AuthSendTokenRequest(token));
+                    apiClient.getUserData(new GLOBALSendTokenRequest(token));
 
                     startActivity(new Intent(LoginActivity.this, VehicleDashboardActivity.class));
                     new Handler().postDelayed(()->{

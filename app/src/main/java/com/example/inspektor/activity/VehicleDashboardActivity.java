@@ -53,7 +53,7 @@ public class VehicleDashboardActivity extends AppCompatActivity implements Adapt
         //Terakhir di 4-12-23 sedang mencoba koding method untuk ambil semua data dari server lalu dimasukkan ke RoomDB
 
         // UNTUK GET USER LOGIN DATA
-//        apiClient.getUserData(new AuthSendTokenRequest(token));
+//        apiClient.getUserData(new GLOBALSendTokenRequest(token));
 
 
     }

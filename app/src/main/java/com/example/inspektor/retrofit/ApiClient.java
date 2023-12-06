@@ -9,17 +9,33 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.inspektor.model.AuthSendTokenRequest;
+import com.example.inspektor.model.GLOBALSendTokenRequest;
 import com.example.inspektor.model.AuthGetLoggedUserResponse;
 import com.example.inspektor.model.AuthRequest;
 import com.example.inspektor.model.AuthSignInResponse;
 import com.example.inspektor.model.Company;
 import com.example.inspektor.model.MobData;
 import com.example.inspektor.model.MobResponse;
+import com.example.inspektor.model.ObjPartData;
+import com.example.inspektor.model.ObjPartResponse;
+import com.example.inspektor.model.PlanData;
+import com.example.inspektor.model.PlanResponse;
+import com.example.inspektor.model.RunAcctData;
+import com.example.inspektor.model.RunAcctResponse;
+import com.example.inspektor.model.VecTypeData;
+import com.example.inspektor.model.VecTypeResponse;
 import com.example.inspektor.repository.MobRepository;
+import com.example.inspektor.repository.ObjPartRepository;
+import com.example.inspektor.repository.PlanRepository;
+import com.example.inspektor.repository.RunAcctRepository;
 import com.example.inspektor.repository.UserRepository;
+import com.example.inspektor.repository.VecTypeRepository;
 import com.example.inspektor.room.entity.MobEntity;
+import com.example.inspektor.room.entity.ObjPartEntity;
+import com.example.inspektor.room.entity.PlanEntity;
+import com.example.inspektor.room.entity.RunAcctEntity;
 import com.example.inspektor.room.entity.UserEntity;
+import com.example.inspektor.room.entity.VecTypeEntity;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -43,6 +59,10 @@ public class ApiClient {
 
     private UserRepository mUserRepository;
     private MobRepository mMobRepository;
+    private ObjPartRepository mObjPartRepository;
+    private PlanRepository mPlanRepository;
+    private RunAcctRepository mRunAcctRepository;
+    private VecTypeRepository mVecTypeRepository;
 
     HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
     OkHttpClient okHttpClient = new OkHttpClient
@@ -98,11 +118,27 @@ public class ApiClient {
                         Log.e(TAG, "Hasil getToken: " + token );
 
                         //  5-12-23
-                        getUserData(new AuthSendTokenRequest(token));
+                        getUserData(new GLOBALSendTokenRequest(token));
 
                         // 6-12-23
-                        getMobData(new AuthSendTokenRequest(token));
+                        getMobData(new GLOBALSendTokenRequest(token));
+
+                        // 6-12-23
+                        getObjPartData(new GLOBALSendTokenRequest(token));
+
+                        // 6-12-23
+                        getPlanData(new GLOBALSendTokenRequest(token));
 //                        Toast.makeText(context, "sPrefsToken: " + token, Toast.LENGTH_SHORT).show();
+
+                        // 6-12-23
+                        getRunAcctData(new GLOBALSendTokenRequest(token));
+
+                        // 6-12-23
+                        getVecTypeData(new GLOBALSendTokenRequest(token));
+
+
+
+
                     } else {
                         Log.e(TAG, "Username tidak terdaftar/password salah!");
                     }
@@ -119,10 +155,12 @@ public class ApiClient {
         }
     }
 
-    public void getUserData(AuthSendTokenRequest authSendTokenRequest){
+
+
+    public void getUserData(GLOBALSendTokenRequest globalSendTokenRequest){
         getApiInterface();
         Call<AuthGetLoggedUserResponse> authGetLoggedUserResponseCall = getApiInterface().getUserData(
-                "Bearer " + authSendTokenRequest.getToken());
+                "Bearer " + globalSendTokenRequest.getToken());
 
         authGetLoggedUserResponseCall.enqueue(new Callback<AuthGetLoggedUserResponse>() {
             @Override
@@ -177,17 +215,17 @@ public class ApiClient {
         });
     }
 
-    public void getMobData(AuthSendTokenRequest authSendTokenRequest){
+    public void getMobData(GLOBALSendTokenRequest globalSendTokenRequest){
         getApiInterface();
         Call<MobResponse> mobResponseCall = getApiInterface().getMobData(
-                "Bearer " + authSendTokenRequest.getToken());
+                "Bearer " + globalSendTokenRequest.getToken());
 
         mobResponseCall.enqueue(new Callback<MobResponse>() {
             @Override
             public void onResponse(Call<MobResponse> call, Response<MobResponse> response) {
                 // GET MOB
                 mMobRepository = new MobRepository(new Application());
-                Log.e(TAG, "onResponse akan mengecek apakah getMobData berhasil atau tidak");
+                Log.e(TAG, "sedang mengecek apakah getMobData berhasil atau tidak");
 
                 assert response.body() != null;
                 List<MobData> mobDataList = response.body().getData();
@@ -217,8 +255,6 @@ public class ApiClient {
 
                     mMobRepository.insertAll(mobEntity);
                 }
-
-
             }
 
             @Override
@@ -228,5 +264,157 @@ public class ApiClient {
         });
     }
 
+    private void getObjPartData(GLOBALSendTokenRequest globalSendTokenRequest) {
+        getApiInterface();
+        Call<ObjPartResponse> objPartResponseCall = getApiInterface().getObjPartData(
+                "Bearer " + globalSendTokenRequest.getToken());
 
+        objPartResponseCall.enqueue(new Callback<ObjPartResponse>() {
+            @Override
+            public void onResponse(Call<ObjPartResponse> call, Response<ObjPartResponse> response) {
+                mObjPartRepository = new ObjPartRepository(new Application());
+
+                Log.e(TAG, "sedang mengecek apakah getObjPartData berhasil atau tidak");
+
+                assert response.body() != null;
+                List<ObjPartData> objPartDataList = response.body().getData();
+
+                for (ObjPartData objPartData : objPartDataList){
+                    ObjPartEntity objPartEntity = new ObjPartEntity();
+
+                    objPartEntity.setObjPartId(objPartData.getId());
+                    objPartEntity.setObjPartName(objPartData.getObjPart());
+                    objPartEntity.setObjPartVehicleType(objPartData.getVehicleType());
+                    objPartEntity.setObjPartZinspecVehicletypeId(objPartData.getZinspecVehicletypeId());
+
+                    mObjPartRepository.insert(objPartEntity);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ObjPartResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getPlanData(GLOBALSendTokenRequest globalSendTokenRequest){
+        getApiInterface();
+        Call<PlanResponse> planResponseCall = getApiInterface().getPlanData(
+                "Bearer " + globalSendTokenRequest.getToken());
+
+        planResponseCall.enqueue(new Callback<PlanResponse>() {
+            @Override
+            public void onResponse(Call<PlanResponse> call, Response<PlanResponse> response) {
+                mPlanRepository = new PlanRepository(new Application());
+
+                Log.e(TAG, "sedang mengecek apakah getPlanData berhasil atau tidak");
+
+                assert response.body() != null;
+                List<PlanData> planDataList = response.body().getData();
+
+                for (PlanData planData : planDataList){
+                    PlanEntity planEntity = new PlanEntity();
+
+                    planEntity.setPlanId(planData.getId());
+                    planEntity.setPlanCompanyCode(planData.getCompanyCode());
+                    planEntity.setPlanBA(planData.getBa());
+                    planEntity.setPlanRunningAccount(planData.getRunningAccount());
+                    planEntity.setPlanStatus(planData.getStatus());
+                    planEntity.setPlanDate(planData.getPlanDate());
+                    planEntity.setPlanInspectDate(planData.getInspectDate());
+                    planEntity.setPlanInspectTime(planData.getInspectTime());
+                    planEntity.setPlanZtuagriRunacctId(planData.getZtuagriRunacctId());
+                    planEntity.setPlanWeek(planData.getWeek());
+
+                    mPlanRepository.insert(planEntity);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlanResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getRunAcctData(GLOBALSendTokenRequest globalSendTokenRequest){
+        getApiInterface();
+        Call<RunAcctResponse> runAcctResponseCall = getApiInterface().getRunAcctData(
+                "Bearer " + globalSendTokenRequest.getToken());
+
+        runAcctResponseCall.enqueue(new Callback<RunAcctResponse>() {
+            @Override
+            public void onResponse(Call<RunAcctResponse> call, Response<RunAcctResponse> response) {
+                mRunAcctRepository = new RunAcctRepository(new Application());
+
+                Log.e(TAG, "sedang mengecek apakah getRunAcctData berhasil atau tidak");
+
+                assert response.body() != null;
+                List<RunAcctData> runAcctDataList = response.body().getData();
+
+                for (RunAcctData runAcctData : runAcctDataList){
+                    RunAcctEntity runAcctEntity = new RunAcctEntity();
+
+                    runAcctEntity.setRunAcctId(runAcctData.getId());
+                    runAcctEntity.setRunAcct(runAcctData.getRunningAccount());
+                    runAcctEntity.setRunAcctCompanyCode(runAcctData.getCompanyCode());
+                    runAcctEntity.setRunAcctEstate(runAcctData.getEstate());
+                    runAcctEntity.setRunAcctAnln1(runAcctData.getAnln1());
+                    runAcctEntity.setRunAcctClassRA(runAcctData.getClassRa());
+                    runAcctEntity.setRunAcctStatusFlag(runAcctData.getStatusFlag());
+                    runAcctEntity.setRunAcctKostl(runAcctData.getKostl());
+                    runAcctEntity.setRunAcctClassGroup(runAcctData.getClassGroup());
+                    runAcctEntity.setRunAcctLicensePlate(runAcctData.getLicensePlate());
+                    runAcctEntity.setRunAcctRunningText(runAcctData.getRunningText());
+                    runAcctEntity.setRunAcctEqunr(runAcctData.getEqunr());
+
+                    mRunAcctRepository.insert(runAcctEntity);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RunAcctResponse> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void getVecTypeData(GLOBALSendTokenRequest globalSendTokenRequest){
+        getApiInterface();
+        Call<VecTypeResponse> vecTypeResponseCall = getApiInterface().getVecTypeData(
+                "Bearer " + globalSendTokenRequest.getToken());
+
+        vecTypeResponseCall.enqueue(new Callback<VecTypeResponse>() {
+            @Override
+            public void onResponse(Call<VecTypeResponse> call, Response<VecTypeResponse> response) {
+                mVecTypeRepository = new VecTypeRepository(new Application());
+
+                Log.e(TAG, "sedang mengecek apakah getVecTypeData berhasil atau tidak");
+
+                assert response.body() != null;
+                List<VecTypeData> vecTypeDataList = response.body().getData();
+
+                for (VecTypeData vecTypeData : vecTypeDataList){
+                    VecTypeEntity vecTypeEntity = new VecTypeEntity();
+
+                    vecTypeEntity.setVecTypeId(vecTypeData.getId());
+
+                    // --- Vehicle_type kok null di database
+                    vecTypeEntity.setVecType(vecTypeData.getVecTypeName());
+                    // --- Vehicle_type kok null di database
+
+                    vecTypeEntity.setVecTypeCode(vecTypeData.getCode());
+                    vecTypeEntity.setVecTypeObjPart(vecTypeData.getObj_part());
+
+                    mVecTypeRepository.insert(vecTypeEntity);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VecTypeResponse> call, Throwable t) {
+
+            }
+        });
+    }
 }

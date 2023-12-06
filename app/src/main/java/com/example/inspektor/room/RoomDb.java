@@ -10,22 +10,37 @@ import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.inspektor.room.dao.MobDao;
+import com.example.inspektor.room.dao.ObjPartDao;
+import com.example.inspektor.room.dao.PlanDao;
+import com.example.inspektor.room.dao.RunAcctDao;
 import com.example.inspektor.room.dao.UserDao;
+import com.example.inspektor.room.dao.VecTypeDao;
 import com.example.inspektor.room.entity.MobEntity;
+import com.example.inspektor.room.entity.ObjPartEntity;
+import com.example.inspektor.room.entity.PlanEntity;
+import com.example.inspektor.room.entity.RunAcctEntity;
 import com.example.inspektor.room.entity.UserEntity;
+import com.example.inspektor.room.entity.VecTypeEntity;
 import com.example.inspektor.typeconverters.CompanyTypeConverter;
 import com.example.inspektor.typeconverters.EstatesTypeConverter;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {UserEntity.class, MobEntity.class}, version = 3, exportSchema = false)
+@Database(entities = {UserEntity.class, MobEntity.class, ObjPartEntity.class, PlanEntity.class, RunAcctEntity.class, VecTypeEntity.class}, version = 3, exportSchema = false)
 @TypeConverters({CompanyTypeConverter.class, EstatesTypeConverter.class})
 public abstract class RoomDb extends RoomDatabase {
 
     //DAO di sini
     public abstract UserDao userDao();
     public abstract MobDao mobDao();
+    public abstract ObjPartDao objPartDao();
+
+    public abstract PlanDao planDao();
+
+    public abstract RunAcctDao runAcctDao();
+
+    public abstract VecTypeDao vecTypeDao();
 
     private static volatile RoomDb INSTANCE;
 
@@ -62,9 +77,22 @@ public abstract class RoomDb extends RoomDatabase {
                 // If you want to start with more data, just add them.
 
                 UserDao userDao = INSTANCE.userDao();
-                MobDao mobDao = INSTANCE.mobDao();
                 userDao.deleteAll();
+
+                MobDao mobDao = INSTANCE.mobDao();
                 mobDao.deleteAll();
+
+                ObjPartDao objPartDao = INSTANCE.objPartDao();
+                objPartDao.deleteAll();
+
+                PlanDao planDao = INSTANCE.planDao();
+                planDao.deleteAll();
+
+                RunAcctDao runAcctDao = INSTANCE.runAcctDao();
+                runAcctDao.deleteAll();
+
+                VecTypeDao vecTypeDao = INSTANCE.vecTypeDao();
+                vecTypeDao.deleteAll();
             });
         }
     };
